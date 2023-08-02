@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com" th:replace="base::base(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>signin</title>
+</head>
+<body>
+	
+	<section>
+	
+	<h1 th:text="${title}">This is Login page</h1>
+	<div id="login">
+        
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="" th:action="@{/Processing_login}" method="post">
+                            <h3 class="text-center login_form_text">Login</h3>
+                            
+                            <div th:if="${param.error}" class="alert alert-danger">
+                            Invalid UserName and Password
+                            </div>
+                            
+                            <div th:if="${param.logout}" class="alert alert-success">
+                            You have been successfully logged out
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="username" class="login_form_text">Username:</label><br>
+                                <input type="text" name="username" id="username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="login_form_text">Password:</label><br>
+                                <input type="password" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="remember-me" class="login_form_text"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                                <input type="submit" name="submit" class="btn btn-primary bg-custom btn-md" value="submit">
+                            </div>
+                            <div id="register-link" class="text-right">
+                            	<label for="">New here?</label>
+                                <a href="#" class="font-success" th:href="@{/signup}" style="text-decoration:none;">Register</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	</section>
+</body>
+</html>

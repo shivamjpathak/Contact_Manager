@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com" th:replace="~{base::base(~{::section})}">
+<head>
+	<meta charset="UTF-8" />
+	<title>Signup</title>
+</head>
+<body>
+	
+	<section>
+	
+	
+	
+	<div class="container">
+	
+		<div class="row">
+		
+			<div class="col-md-8 offse-md-2 mx-auto text-justify-center form-custom">
+			
+				<div th:if ="${session.message}" th:classAppend="${session.message.type}" class="alert alert-primary text-center" role="alert">
+	  					<p th:text="${session.message.content}"></p>
+	  					
+	  					<th:block th:text="${@Message.removeMessage()}"></th:block>
+	  					
+				</div>
+			
+				<div class="container text-center">
+					<img style="width:80px;" th:src="@{/img/Registration.png}"></img>
+				</div>
+			
+					<h1 class="text-center"> Register here!</h1>
+				
+					<form novalidate action="" th:action="@{/do_Registration}" method="post" th:modelAttribute="${user}" th:object="${user}">
+			
+						
+			
+						<div class="mb-3">
+							  <label for="exampleFormControlInput1" class="form-label">Name</label>
+							  <input name="userName" type="text" class="form-control" th:classAppend="${#fields.hasErrors('userName') ? 'is-invalid':''}" id="name" placeholder="Type your name..."
+							  th:value="${user.userName}"
+							  />
+							  
+							  <div class="invalid-feedback" th:each="e: ${#fields.errors('userName')}" th:text="${e}">
+							  <p>Invalid</p>
+							  </div>
+						</div>
+						
+						  
+						<div class="mb-3">
+							  <label for="exampleFormControlInput2" class="form-label">Email address</label>
+							  <input name="email" type="email" class="form-control" th:classAppend="${#fields.hasErrors('email') ? 'is-invalid':''}" id="email" placeholder="name@example.com"
+							  th:value="${user.email}"
+							  required>
+							  
+							  <div class="invalid-feedback" th:each="e: ${#fields.errors('email')}" th:text="${e}">
+							  
+							  </div>
+						</div>
+						
+						<!-- 
+						<div class="mb-3">
+						Email:
+                        <input type="text" class="form-control" th:field="*{email}" placeholder="name@example.com"></input>
+                        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email
+                            Error</div>
+						</div>
+						 -->
+						<div class="mb-3">
+							  <label for="exampleFormControlInput3" class="form-label">Password</label>
+							  <input  name="password" type="password" th:classAppend="${#fields.hasErrors('password') ? 'is-invalid':''}" class="form-control" id="password" placeholder="Type you Password here..."
+							  >
+							  <div class="invalid-feedback" th:each="e : ${#fields.errors('password')}" th:text="${e}">
+							  
+							  
+							  </div>
+							  
+						</div>
+					
+						<div class="mb-3">
+							  <label for="exampleFormControlTextarea4" class="form-label" >About</label>
+							  <textarea name="about" class="form-control" th:classAppend="${#fields.hasErrors('about') ? 'is-invalid':''}" id="about" rows="5" th:text="${user.about}"></textarea>
+							  
+							  <div class="invalid-feedback" th:each="e :${#fields.errors('about')}" th:text="${e}">
+							  
+							  </div>
+						</div>
+						
+						<div class="form-group text-left">
+						
+						<input type= "checkbox" id="agreement" name="agreement"/> 
+						
+						<label for="agreement"> Agree terms and condition</label>
+						
+						</div >
+						
+						<div class="text-right">
+						
+						<label class="text-right" for="agreement"> Already Registered?</label>
+						
+						<a class="text-right" style="text-decoration:none" th:href="@{/signin}">Sign in</a>
+						
+						</div>
+						
+						<div class="container text-center">
+						
+							<button class="btn btn-primary bg-custom btn-lg " type="submit">Submit</button>
+							
+							<input type= "reset" class="btn btn-primary btn-lg btn-warning text-dark"></input>
+						
+						</div>
+						
+					</form>
+			
+			</div>
+		
+		
+		
+		</div>
+	
+	
+	</div>
+	
+	
+	</section>
+</body>
+</html>
