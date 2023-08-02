@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com" th:replace="normal/base::base(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="${title}">Add Contact</title>
+</head>
+<body>
+	
+	<section>
+	
+	<div class="card mr-2 ml-2">
+	
+		<div class="card-body">
+		
+			<div class="text-center" style="font-size: 20px; color: Black;font-weight: bold;">Add Contact
+			
+				<div class="container-fluid mt-1">
+				
+					<div class="row">
+					
+						<div class="col-md-10 offset-md-1">
+						
+							<form action="#" th:object="${contact}" th:modelAttribute="${contact}" enctype="multipart/form-data" method="post" th:action="@{/user/process_contact}" class="mt-2">
+							
+								<div class="input-group mt-2">
+								
+									<div class="input-group-prepend">
+									
+										<div class="input-group-text mr-3">
+										
+											<i class= "fa fa-plus"></i>
+										
+										</div>
+									
+									</div>
+								
+								<input required type="text" id= "name" name="name" placeholder= "Enter Name here" class="form-control" />
+								
+								</div>
+								
+								
+								<div class="input-group mt-2">
+								
+									<div class="input-group-prepend">
+									
+										<div class="input-group-text mr-3">
+										
+											<i class="fa-solid fa-user"></i>
+										
+										</div>
+									
+									</div>
+								
+								<input required type="text" id= "secondName" name="secondName" placeholder= "Enter nick name here" class="form-control" />
+								
+								</div>
+								
+								
+								<div class="input-group mt-2">
+								
+									<div class="input-group-prepend">
+									
+										<div class="input-group-text mr-3">
+										
+											@
+										
+										</div>
+									
+									</div>
+								
+								<input required type="email" id= "email" name="email" placeholder= "someone@example.com" class="form-control" />
+								
+								</div>
+								
+								
+								<div class="input-group mt-2">
+								
+									<div class="input-group-prepend">
+									
+										<div class="input-group-text mr-3">
+										
+											<i class="fa-solid fa-phone"></i>
+										
+										</div>
+									
+									</div>
+								
+								<input required type="number" id= "phone" name="phone" placeholder= "+XX XXXXXXXXXX" class="form-control" />
+								
+								</div>
+								
+								
+								<div class="input-group mt-2">
+								
+									<div class="input-group-prepend">
+									
+										<div class="input-group-text mr-3">
+										
+											<i class="fa-solid fa-briefcase"></i>
+										
+										</div>
+									
+									</div>
+								
+								<input type="text" id= "work" name="work" placeholder= "Add Work here" class="form-control" />
+								
+								</div>
+								
+								
+								<div class="input-group mt-2">
+								
+									<div class="input-group-prepend">
+									
+										<div class="input-group-text mr-3">
+										
+											<i class="fa-solid fa-scroll"></i>
+										
+										</div>
+									
+									</div>
+								
+								<textarea id= "description" name="description" placeholder= "Add description here"  rows= "10" class="form-control" ></textarea>
+								
+								</div>
+								
+								<div class="custom-file mt-2 text-left">
+								
+								<input type="file" name="profileImg">
+								
+								</div>
+								
+								<div class="container">
+								
+									<button class="btn btn-primary" name= "Add Contact" value="Add Contact">Add Contact</button>
+								
+								</div>
+							
+							</form>
+						
+						</div>
+					
+					</div>
+				
+				</div>
+			
+			</div>
+				
+				
+		
+		
+		
+		</div>
+	
+	
+	
+	</div>
+	
+	</section>
+</body>
+</html>

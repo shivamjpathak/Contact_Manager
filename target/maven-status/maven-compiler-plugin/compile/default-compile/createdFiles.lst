@@ -1,0 +1,12 @@
+com\smart\config\MyConfig.class
+com\smart\config\CustomUserDetails.class
+com\smart\entity\Contact.class
+com\smart\SmartContactManagerApplication.class
+com\smart\dao\ContactsRepository.class
+com\smart\config\UserDetailsServiceImpl.class
+com\smart\dao\UserRepository.class
+com\smart\controller\HomeController.class
+com\smart\ServletInitializer.class
+com\smart\controller\UserController.class
+com\smart\helper\Message.class
+com\smart\entity\User.class

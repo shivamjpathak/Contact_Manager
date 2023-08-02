@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com" th:replace="normal/base::base(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>View Contacts</title>
+</head>
+<body>
+	
+	<section>
+	
+	<h1 th:text="${title}">View Contacts</h1>
+	
+	<div class="card">
+	
+		<div class="card-body">
+		
+			<table class="table">
+				
+			  <thead class="bg-custom text-white">
+				    <tr>
+				      <th scope="col">ID</th>
+				      <th scope="col">Name</th>
+				      <th scope="col">Email</th>
+				      <th scope="col">Phone</th>
+				      <th scope="col">Action</th>
+				    </tr>
+			  </thead>
+			  
+			  <tbody>
+				    <tr th:each="c: ${contacts}">
+				      <th scope="row" th:text="'CM'+ ${c.cId}"></th>
+				      <td >
+						  <img class="contact_image" th:src="@{'/img/'+ ${c.image}}" alt="profile_photo" />
+						  
+						  <a style="text-decoration:none;" th:href="@{'/user/viewContacts/'+${currentPage}+'/CM'+${c.cId}}"><span th:text="${c.name}" ></span></a>
+						  
+						  
+					  </td>
+				      <td th:text="${c.email}"></td>
+				      <td th:text="${c.phone}"></td>
+				      <td >
+						  
+						  <button class="btn btn-danger btn-sm">Delete</button>
+						  <button class="btn btn-primary btn-sm">Update</button>
+						  
+					  </td>
+				     
+				    </tr>
+			  </tbody>
+		</table>
+		
+		<nav aria-label="Page navigation example">
+		  <ul class="pagination">
+		    <li th:if="${currentPage!=0}" class="page-item"><a class="page-link" th:href="@{${currentPage-1}}">Previous</a></li>
+		    <li th:classAppend="${(i-1)==currentPage ? 'active':''}" th:each="i: ${#numbers.sequence(1, totalPage)}" class="page-item"><a class="page-link" th:href="@{${i-1}}"><span th:text="${i}"></span></a></li>
+		    
+		    <li th:if="${(currentPage+1)!=totalPage}" class="page-item"><a class="page-link" th:href="@{${currentPage+1}}">Next</a></li>
+		  </ul>
+		</nav>
+		
+		</div>
+	
+	</div>
+	
+	</section>
+</body>
+</html>
