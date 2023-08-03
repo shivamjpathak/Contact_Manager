@@ -1,6 +1,8 @@
 package com.smart.controller;
 
 import java.io.File;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -8,6 +10,7 @@ import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 import java.util.List;
 
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
@@ -15,6 +18,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -82,7 +86,7 @@ public class UserController {
 	{
 
 		try {
-
+			
 			String userName= principal.getName();
 			
 			User user= userRepository.loadUserDetailsByUserName(userName);
@@ -107,23 +111,31 @@ public class UserController {
 			}
 			else
 			{
-			
 				
 			String fileName= id + file.getOriginalFilename();	//appended image file name with contact id for uniqueness
-				
+			
+			existingContact.setImage(id + file.getOriginalFilename());	
 			//contact.setImage(fileName);
 			
 			File saveFile= new ClassPathResource("static/img").getFile();	//get img folder location
-			
-			
 			
 			Path path= Paths.get(saveFile.getAbsolutePath()+File.separator+fileName);	//generate path to img folder
 			
 			Files.copy(file.getInputStream(),path, StandardCopyOption.REPLACE_EXISTING);
 			
+//			InputStream is = this.getClass().getClassLoader().getResourceAsStream("BOOT-INF/classes/static/img");
+//			
+//			Path path= Paths.get(is+File.separator+fileName);	//generate path to img folder
+//			
+//			Files.copy(file.getInputStream(),path, StandardCopyOption.REPLACE_EXISTING);
+			
+			//StreamUtils.copy(file.getInputStream(),(OutputStream) path);
+			
 			System.out.println("Image id uploaded");
 			
-			existingContact.setImage(id + file.getOriginalFilename());
+			//existingContact.setImage(id + file.getOriginalFilename());
+			
+			
 			}
 			
 			//Saving user again to save image
@@ -135,11 +147,12 @@ public class UserController {
 		}
 		catch(Exception e)
 		{
-			e.getMessage();
+			//e.getMessage();
 			
 			System.out.println(e);
 			
-			session.setAttribute("message", new Message("Something went wrong!","alert-danger"));
+			//session.setAttribute("message", new Message("Something went wrong!","alert-danger"));
+			session.setAttribute("message", new Message(e.getMessage(),"alert-danger"));
 		}
 			
 		return "normal/add_contact_form";	
