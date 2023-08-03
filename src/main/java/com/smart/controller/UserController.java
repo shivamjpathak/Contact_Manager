@@ -114,6 +114,8 @@ public class UserController {
 				
 			String fileName= id + file.getOriginalFilename();	//appended image file name with contact id for uniqueness
 			
+			System.out.println("********"+ fileName);
+			
 			existingContact.setImage(id + file.getOriginalFilename());	
 			//contact.setImage(fileName);
 			
