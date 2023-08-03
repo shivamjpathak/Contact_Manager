@@ -101,7 +101,7 @@ public class UserController {
 			
 			Integer id= this.contactRepository.getContactIdByPhone(phone);
 			Contact existingContact= this.contactRepository.getReferenceById(id);
-			existingContact.setImage(id + file.getOriginalFilename());	
+			
 			//Setting profile Image
 			if(file.isEmpty())
 			{
@@ -116,7 +116,7 @@ public class UserController {
 			
 			System.out.println("********"+ fileName);
 			
-			//existingContact.setImage(id + file.getOriginalFilename());	
+			existingContact.setImage(fileName);	
 			//contact.setImage(fileName);
 			
 			File saveFile= new ClassPathResource("static/img").getFile();	//get img folder location
