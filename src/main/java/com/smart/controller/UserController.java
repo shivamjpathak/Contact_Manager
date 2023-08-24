@@ -187,5 +187,27 @@ public class UserController {
 		model.addAttribute(contact);
 		return "normal/openContactRecord";
 	}
+
+	@GetMapping("delete/{page}/{id}")
+	public String deleteContact(@PathVariable("id") Integer id,@PathVariable("page") Integer page, HttpSession session)
+	{
+		this.contactRepository.deleteContact(id);
+		
+		session.setAttribute("message", new Message("Contact is deleted Successfully", "alert-success"));	
+		
+		return "redirect:/user/viewContacts/"+ page;
+	}
+	
+	
+	//Open Update Form 
+	@PostMapping("/update/{id}")
+	public String updateContact(@PathVariable("id") Integer cId, Model model)
+	{
+		Contact contact =this.contactRepository.findById(cId).get();
+		model.addAttribute("contact", contact);
+		return "normal/update_contact_form";
+	}
 	
 }
+
+
