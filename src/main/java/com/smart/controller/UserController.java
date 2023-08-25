@@ -120,7 +120,7 @@ public class UserController {
 			//contact.setImage(fileName);
 			
 			File saveFile= new ClassPathResource("/static/img").getFile();	//get img folder location
-			
+			System.out.println(saveFile);
 			Path path= Paths.get(saveFile.getAbsolutePath()+File.separator+fileName);	//generate path to img folder
 			
 			Files.copy(file.getInputStream(),path, StandardCopyOption.REPLACE_EXISTING);
