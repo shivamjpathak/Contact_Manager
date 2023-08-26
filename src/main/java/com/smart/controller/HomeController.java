@@ -24,7 +24,7 @@ import jakarta.validation.Valid;
 public class HomeController {
 
 	@Autowired
-	public UserRepository userRepository;
+	private UserRepository userRepository;
 	
 	@Autowired
 	public BCryptPasswordEncoder passwordEncoder;
