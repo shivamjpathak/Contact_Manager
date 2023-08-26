@@ -120,25 +120,13 @@ public class UserController {
 			//contact.setImage(fileName);
 			
 			File saveFile= new ClassPathResource("/static/img").getFile();	//get img folder location
-			System.out.println("**********");
-			System.out.println(saveFile);
-				System.out.println("**********");
+			
 			Path path= Paths.get(saveFile.getAbsolutePath()+File.separator+fileName);	//generate path to img folder
 			
 			Files.copy(file.getInputStream(),path, StandardCopyOption.REPLACE_EXISTING);
-			
-//			InputStream is = this.getClass().getClassLoader().getResourceAsStream("BOOT-INF/classes/static/img");
-//			
-//			Path path= Paths.get(is+File.separator+fileName);	//generate path to img folder
-//			
-//			Files.copy(file.getInputStream(),path, StandardCopyOption.REPLACE_EXISTING);
-			
-			//StreamUtils.copy(file.getInputStream(),(OutputStream) path);
+						
 			
 			System.out.println("Image id uploaded");
-			
-			//existingContact.setImage(id + file.getOriginalFilename());
-			
 			
 			}
 			
