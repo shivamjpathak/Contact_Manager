@@ -132,7 +132,7 @@ public class UserController {
 					.getFile()).toPath();
 			Path path2= Paths.get(path+"/"+fileName);
 			*/
-			Path path4= Paths.get("file:/app.jar/BOOT-INF/classes/static/img/"+ fileName);
+			Path path4= Paths.get("file://BOOT-INF/classes/static/img/"+ fileName);
 			
 			System.out.println(path4);
 			Files.copy(file.getInputStream(),path4, StandardCopyOption.REPLACE_EXISTING);
