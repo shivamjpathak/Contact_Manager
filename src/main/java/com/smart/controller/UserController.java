@@ -127,12 +127,15 @@ public class UserController {
 			//Path path= Paths.get(saveFile.getAbsolutePath()+File.separator+fileName);	//generate path to img folder
 			//Path path= Paths.get(saveFile+fileName);
 			//Files.copy(file.getInputStream(),path, StandardCopyOption.REPLACE_EXISTING);
-
+			/*
 			Path path = new File(getClass().getClassLoader().getResource("static/img/")
 					.getFile()).toPath();
 			Path path2= Paths.get(path+"/"+fileName);
-			System.out.println(path2);
-			Files.copy(file.getInputStream(),path2, StandardCopyOption.REPLACE_EXISTING);
+			*/
+			Path path4= Paths.get("file:/app.jar/BOOT-INF/classes/static/img/"+ fileName);
+			
+			System.out.println(path4);
+			Files.copy(file.getInputStream(),path4, StandardCopyOption.REPLACE_EXISTING);
 
 
 				
